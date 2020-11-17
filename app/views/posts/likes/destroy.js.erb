@@ -1,0 +1,1 @@
+document.getElementById("post_<%= @post.id %>_likes").innerHTML = "<%=j render partial: 'posts/likes', locals: { post: @post } %>"

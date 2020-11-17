@@ -1,0 +1,12 @@
+<% post.likes.each do |like| %>
+<%= image_tag like.user.avatar_url, width: 20 %>
+<% end %>
+
+<% if user_signed_in? && current_user.likes?(post) %>
+<%= link_to "Unlike", post_like_path(post), method: :delete, remote: true %>
+<% else %>
+<%# Remote allows us to make a JS request to prevent rerendering the page %>
+<%= link_to "Like", post_like_path(post), method: :post, remote: true %>
+<% end %>
+
+<%= post.likes.count %>
